@@ -1,12 +1,13 @@
 import requests
 import pyshorteners
+from decouple import config
 def get_trending_data():
 	url = "https://tiktok_solutions.p.rapidapi.com/trending/US"
 
 	querystring = {"custom_cursor":""}
 
 	headers = {
-		"X-RapidAPI-Key": "66686e774dmsh02ecbf6f05cc5d7p1ea5bcjsn31fdccd6cac2",
+		"X-RapidAPI-Key": config('RAPID_API_KEY'),
 		"X-RapidAPI-Host": "tiktok_solutions.p.rapidapi.com"
 	}
 
