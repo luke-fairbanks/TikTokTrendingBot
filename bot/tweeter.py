@@ -23,7 +23,7 @@ def create_tweet(tweet_dict):
     )
     tweet_list = [tweet_dict['part1']]
     # Convert text into split tweets
-    splice_tweet = trim2(tweet_dict['part2'])
+    splice_tweet = trim(tweet_dict['part2'])
     # Add split tweets to list
     for item in splice_tweet:
         tweet_list.append(item)
@@ -73,22 +73,21 @@ def find_space(sequence):
             return end+1
     return 0
 
-def trim2(sequence):
+def trim(sequence):
     '''
-    slices at punctuation, unless that gives you slices that are shorter than
-    100 characters, then try and slice on spaces if it gives you are larger
-    slice
+    simple version:  returns a list of strings split on punctuation, closest to
+    270
     '''
+
     result = []
     while sequence:
         end = find_punctuation(sequence)
-        if end < 150 and len(sequence)>200:
-            end = max(end, find_space(sequence))
         if not end:
-            end = min(200,len(sequence))
-
+            # ok, no endpoint found so slice at 137, unless the len of the
+            # sequence is now shorter
+            end = min(260,len(sequence))
         result.append(sequence[0:end].strip())
-        sequence = sequence[end+1:]
+        sequence = sequence[end:]
 
     # add prefix to each tweet if result is longer than 1
     if len(result) > 1:
