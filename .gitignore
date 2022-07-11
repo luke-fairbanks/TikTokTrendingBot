@@ -1,5 +1,5 @@
 venv/
 bot/__pycache__/
-bot/tempCodeRunnerFile.py
 __pycache__/
+bot/tempCodeRunnerFile.py
 .env
