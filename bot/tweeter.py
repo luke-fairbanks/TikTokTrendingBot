@@ -28,7 +28,7 @@ def create_tweet(tweet_dict):
     for item in splice_tweet:
         tweet_list.append(item)
 
-    for tweet in tweet_list:
+    for tweet in reversed(tweet_list):
         # Convert the text to a json object
         payload = {"text": tweet}
         # Making the request
